@@ -1,8 +1,10 @@
 'use strict'
 
 import * as IPFS from 'ipfs-core'
+import *  as all from 'it-all'
+import {Blob} from 'node:buffer';
 
-async function main () {
+async function readFile () {
     const node = await IPFS.create()
     const version = await node.version()
   
@@ -16,6 +18,28 @@ async function main () {
         data += chunk.toString()
     }
     console.log(data)
-  }
+}
+
+async function writeFile () {
+  const node = await IPFS.create()
+  const version = await node.version()
+
+  console.log('Version:', version.version)
+
+  const fileText = "Hello World"
+
+  const blob = new Blob([fileText], {type: 'text/plain; charset=utf-8'});
+
+  const file = await node.content({
+    path: 'hello.txt',
+    content: blob
+  })
+
+  console.log('Added file:', file.path, file.cid.toString())
+
+  const data = await all(node.cat(file.cid))
+
+  console.log('Added file contents:', data)
+}
   
-main()
+writeFile()
