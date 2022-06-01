@@ -11,7 +11,7 @@
   "type": "module",
   "license": "ISC",
   "dependencies": {
+    "cids": "^1.1.9",
     "ipfs-core": "^0.15.0"
   }
-
 }
