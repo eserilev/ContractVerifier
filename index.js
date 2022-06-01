@@ -1,12 +1,12 @@
+const IPFS = require('ipfs-core')
 
 
-const express = require('express')
-const IPFS = require('ipfs')
 
-const app = express();
-
-app.get('/', async (req,res) => {
+async function main () {
     const node = await IPFS.create()
+    const version = await node.version()
+  
+    console.log('Version:', version.version)
 
     const stream = node.cat('QmPChd2hVbrJ6bfo3WBcTW4iZnpHm8TEzWkLHmLpXhF68A')
     let data = '';
@@ -15,8 +15,6 @@ app.get('/', async (req,res) => {
         // chunks of data are returned as a Buffer, convert it back to a string
         data += chunk.toString()
     }
-})
-
-app.listen(3000, () => {
-    console.log('Server started');
-})
+  }
+  
+main()
