@@ -16,4 +16,4 @@ async function pin(path, content) {
     console.log("Added file:", fileAdded.path, fileAdded.cid);
 }
 
-module.exports = { pin }
+export default pin
