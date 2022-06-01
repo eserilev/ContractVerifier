@@ -1,6 +1,6 @@
 'use strict'
 
-const IPFS = require('ipfs-core')
+import * as IPFS from 'ipfs-core'
 
 async function main () {
     const node = await IPFS.create()
@@ -15,6 +15,7 @@ async function main () {
         // chunks of data are returned as a Buffer, convert it back to a string
         data += chunk.toString()
     }
+    console.log(data)
   }
   
 main()
