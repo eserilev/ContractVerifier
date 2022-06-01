@@ -11,7 +11,7 @@
   "type": "module",
   "license": "ISC",
   "dependencies": {
-    "ipfs-core": "^0.15.0"
+    "ipfs-core": "^0.15.0",
+    "js-sha256": "^0.9.0"
   }
-
 }
